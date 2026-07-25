@@ -1,0 +1,110 @@
+:root {
+  color-scheme: dark;
+  --ink: #f6f5f1;
+  --muted: rgba(246, 245, 241, 0.61);
+  --line: rgba(255, 255, 255, 0.12);
+  --night: #101720;
+  --accent: #d8f69d;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font: inherit; }
+
+.app-shell {
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.atmosphere, .atmosphere > * { inset: 0; pointer-events: none; position: absolute; }
+
+.atmosphere { z-index: -1; background: radial-gradient(circle at 50% -20%, #263948 0, transparent 50%), linear-gradient(145deg, #101a24 0%, #0d131b 55%, #18202b 100%); }
+
+.orb { border-radius: 50%; filter: blur(1px); opacity: .68; }
+.orb--one { background: radial-gradient(circle, rgba(135, 195, 186, .25), rgba(135, 195, 186, 0) 68%); height: 44rem; left: -23rem; top: -14rem; width: 44rem; }
+.orb--two { background: radial-gradient(circle, rgba(192, 162, 227, .18), rgba(192, 162, 227, 0) 69%); height: 40rem; left: auto; right: -17rem; top: 18%; width: 40rem; }
+.orb--three { background: radial-gradient(circle, rgba(201, 237, 146, .12), rgba(201, 237, 146, 0) 68%); bottom: -20rem; height: 42rem; left: 23%; top: auto; width: 42rem; }
+.grid { background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px); background-size: 42px 42px; mask-image: radial-gradient(ellipse at center, black, transparent 78%); opacity: .8; }
+
+.screen {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 1.65rem clamp(1.35rem, 5vw, 5rem);
+}
+
+.brand { color: rgba(246, 245, 241, .85); font-size: .8rem; font-weight: 700; letter-spacing: -.035em; }
+.brand span { color: var(--accent); }
+
+.screen--home { justify-content: space-between; }
+.home-content { margin: auto 0; max-width: 43rem; padding: 4rem 0; }
+.eyebrow, .question-label { color: var(--accent); font-family: "DM Mono", monospace; font-size: .61rem; letter-spacing: .115em; margin: 0 0 1.45rem; text-transform: uppercase; }
+h1 { font-size: clamp(2.8rem, 10.9vw, 7.8rem); font-weight: 500; letter-spacing: -.075em; line-height: .91; margin: 0; }
+h1 em { color: rgba(246,245,241,.88); font-family: "Playfair Display", serif; font-weight: 500; letter-spacing: -.09em; }
+.intro { color: var(--muted); font-size: .98rem; letter-spacing: -.014em; line-height: 1.55; margin: 1.85rem 0 2.25rem; max-width: 25rem; }
+
+.primary-button {
+  align-items: center;
+  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  color: #121a22;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: .9rem;
+  font-weight: 700;
+  gap: 1.25rem;
+  justify-content: space-between;
+  letter-spacing: -.025em;
+  min-height: 3.8rem;
+  padding: .35rem .45rem .35rem 1.45rem;
+  transition: box-shadow .35s ease, transform .35s cubic-bezier(.2,.8,.2,1), background .25s ease;
+}
+.primary-button svg { background: var(--accent); border-radius: 50%; fill: none; height: 3rem; padding: .78rem; stroke: #172119; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; width: 3rem; }
+.primary-button:hover { background: #fff; box-shadow: 0 13px 32px rgba(0,0,0,.2); transform: translateY(-3px); }
+.primary-button:active { transform: scale(.97); }
+.primary-button:focus-visible, .back-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.footnote { color: rgba(246,245,241,.39); font-size: .69rem; letter-spacing: .02em; margin: 0; }
+
+.screen--question { justify-content: space-between; }
+.question-topline { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding-bottom: 1.15rem; }
+.question-label { color: rgba(246,245,241,.44); font-size: .53rem; margin: 0; }
+.question-content { margin: auto 0; max-width: 63rem; padding: 3.5rem 0; }
+.quote-mark { color: var(--accent); display: block; font-family: "Playfair Display", serif; font-size: 5rem; height: 2.25rem; line-height: 1; margin-left: -.2rem; }
+.question { font-family: "Playfair Display", serif; font-size: clamp(2.35rem, 8.4vw, 6.5rem); font-weight: 500; letter-spacing: -.06em; line-height: 1.045; margin: .7rem 0 0; text-wrap: balance; }
+.back-button { align-items: center; align-self: flex-start; background: rgba(255,255,255,.055); border: 1px solid var(--line); border-radius: 999px; color: rgba(246,245,241,.77); cursor: pointer; display: inline-flex; font-size: .78rem; gap: .55rem; padding: .72rem 1rem; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+.back-button svg { fill: none; height: 1rem; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; width: 1rem; }
+.back-button:hover { background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.25); transform: translateX(-2px); }
+.back-button:active { transform: scale(.96); }
+
+.screen[hidden] { display: none; }
+.screen.is-entering { animation: reveal .7s cubic-bezier(.2,.7,.2,1) both; }
+.question-content { animation: question-reveal .85s .08s cubic-bezier(.16,.8,.28,1) both; }
+.status { bottom: 1.5rem; color: #ffcabd; font-size: .75rem; left: 50%; margin: 0; opacity: 0; position: fixed; transform: translate(-50%, .5rem); transition: opacity .2s ease, transform .2s ease; z-index: 4; }
+.status.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+@keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes question-reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (min-width: 700px) {
+  .screen { padding-bottom: 2.5rem; padding-top: 2.5rem; }
+  .home-content { padding: 5rem 0; }
+  .intro { font-size: 1.05rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
